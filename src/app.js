@@ -1,25 +1,28 @@
-fetch('https://dummyjson.com/users')
-  .then(res => res.json())
-  .then(data => {
-    const userList = document.getElementById('userList');
-    userList.innerHTML = '';
+const input = document.getElementById('searchInput');
+const list = document.getElementById('productList');
 
-    data.users.forEach(user => {
-      const userDiv = document.createElement('div');
-      userDiv.className = 'user-card';
-      userDiv.innerHTML = `
-        <img src="${user.image}" alt="${user.firstName}">
-        <div>
-          <h3>${user.firstName} ${user.lastName}</h3>
-          <p><strong>Username:</strong> ${user.username}</p>
-          <p><strong>Age:</strong> ${user.age}</p>
-          <p><strong>Phone:</strong> ${user.phone}</p>
-        </div>
-      `;
-      userList.appendChild(userDiv);
-    });
-  })
-  .catch(error => {
-    document.getElementById('userList').innerHTML = 'Xatolik yuz berdi!';
-    console.error('Xatolik:', error);
+input.addEventListener('input', async () => {
+  const query = input.value.trim();
+  if (query.length < 1) {
+    list.innerHTML = '';
+    return;
+  }
+
+  const res = await fetch(`https://dummyjson.com/products/search?q=${query}`);
+  const data = await res.json();
+  const products = data.products.slice(0, 10);
+
+  list.innerHTML = '';
+  products.forEach(p => {
+    const el = document.createElement('div');
+    el.className = 'product';
+    el.innerHTML = `
+      <img src="${p.thumbnail}" alt="${p.title}">
+      <div>
+        <h3>${p.title}</h3>
+        <p>${p.description}</p>
+      </div>
+    `;
+    list.appendChild(el);
   });
+});

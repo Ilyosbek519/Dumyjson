@@ -1,37 +1,24 @@
 body {
-    font-family: Arial;
-    background-color: #f8f8f8;
-    margin: 0;
-    padding: 20px;
-  }
-  
-  h1 {
-    text-align: center;
-  }
-  
-  #userList {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-  
-  .user-card {
-    border: 1px solid #ccc;
-    padding: 10px;
-    margin: 10px;
-    border-radius: 8px;
-    width: 300px;
-    background: #fff;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  }
-  
-  .user-card img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-  
+  font-family: sans-serif;
+  padding: 20px;
+  background-color: #f4f4f4;
+}
+input {
+  padding: 10px;
+  width: 300px;
+  margin-bottom: 20px;
+}
+.product {
+  background: white;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+}
+.product img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  margin-right: 10px;
+}
